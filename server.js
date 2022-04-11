@@ -3,6 +3,9 @@ const path = require('path');
 const cors = require('cors');
 
 
+const res = await
+
+
 require('dotenv').config();
 
 const app = express();
@@ -18,8 +21,6 @@ app.get('/', (req,res) => {
         title: 'Coisas a transportar'
     });
 });
-
-
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
