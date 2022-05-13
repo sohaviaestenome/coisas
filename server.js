@@ -3,9 +3,6 @@ const path = require('path');
 const cors = require('cors');
 
 
-const res = await
-
-
 require('dotenv').config();
 
 const app = express();
