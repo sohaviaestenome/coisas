@@ -1,9 +1,9 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+const logger = require('morgan');
 
-
-const res = await
+const coisasRouter = require('./routers/coisas.route');
 
 
 require('dotenv').config();
@@ -15,12 +15,9 @@ app.set('views', path.join(__dirname, 'views'));
 
 const PORT = process.env.PORT || 8000;
 
-
-app.get('/', (req,res) => {
-    res.render('index.hbs', {
-        title: 'Coisas a transportar'
-    });
-});
+app.use(logger('dev'));
+app.use(express.json());
+app.use('/coisas',coisasRouter);
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
