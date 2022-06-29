@@ -10,9 +10,6 @@ require('dotenv').config({path: './db/.env'});
 
 const app = express();
 
-// app.set('view engine', 'hbs');
-// app.set('views', path.join(__dirname, 'views'));
-
 const PORT = process.env.PORT || 8000;
 
 app.use(logger('dev'));
