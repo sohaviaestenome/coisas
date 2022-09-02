@@ -1,13 +1,8 @@
 import { axiosInstance } from './config';
 
-export const getCoisas= async (id, month, year) => {
+export const getCoisas = async () => {
   try {
-    const response = await axiosInstance.get('/dashboard/',{
-      params: {
-        id,
-        month: month,
-        year: year
-      }
+    const response = await axiosInstance.get('/coisas',{
     });
     return response.data;
     
