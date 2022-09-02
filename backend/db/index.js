@@ -1,16 +1,14 @@
-const { path } = require('express/lib/application');
-
-require('dotenv').config({path: './db/.env'});
-
+const { NODE_ENV } = require('../config');
+const { DB } = require('../config')[NODE_ENV];
 
 const { Pool } = require('pg');
-const isProduction = process.env.NODE_ENV === 'production';
+const isProduction = NODE_ENV === 'production';
 
-const connectionString = `postgresql://${process.env.DB_USER}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATABASE}`;
+const connectionString = `postgresql://${DB.DB_USER}@${DB.DB_HOST}:${DB.DB_PORT}/${DB.DB_DATABASE}`;
 
 const db = new Pool({
-  connectionString: isProduction ? process.env.DATABASE_URL : connectionString,
+  connectionString: isProduction ? DB.DATABASE_URL : connectionString,
   ssl: isProduction,
 });
 
-module.exports = { db } 
+module.exports = { db }
