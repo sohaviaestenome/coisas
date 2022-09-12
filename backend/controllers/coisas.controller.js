@@ -2,7 +2,7 @@ const { db } = require('../db/index');
 
 exports.getCoisas = async (req,res) => {
     const query = "SELECT * FROM items";
-    
+		console.log(req);
 
     try {
         const coisas = await db.query(query);
