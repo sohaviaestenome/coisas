@@ -1,6 +1,6 @@
 import React from 'react';
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Checkbox, IconButton  } from '@mui/material';
-import CommentIcon from '@mui/icons-material/Comment';
+import DeleteIcon from '@mui/icons-material/DeleteIcon';
 
 export const  CoisasList = (props) => {
 
