@@ -1,38 +1,25 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Checkbox, IconButton  } from '@mui/material';
 import CommentIcon from '@mui/icons-material/Comment';
-import { getCoisas } from '../../apis/coisas';
 
-export const CoisasList = () => {
+export const  CoisasList = (props) => {
 
-  const [items, setItems] = React.useState([]);
-
-  useEffect(()=> {
-    getCoisas().then(res => {
-      setItems(res.data);
-    }, [])
-  })
-
-  console.log(items, 'items');
+  const { items } = props;
   
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      {items.map((value) => {
-        const labelId = `checkbox-list-label-${value}`;
-
-        return (
-          <ListItem
-            key={value}
-            secondaryAction= {
-              <IconButton edge="end" aria-label="comments">
-                <CommentIcon />
-              </IconButton>
-            }
-            disablePadding
-          >
-          </ListItem>
-        );
-      })}
+      {items.map((value) => (
+        <ListItem
+          key={value}
+          secondaryAction={
+            <IconButton aria-label="comment">
+              <CommentIcon />
+            </IconButton>
+          }
+        >
+          <ListItemText primary={`${value.nome}`} />
+        </ListItem>
+      ))}
     </List>
   );
 }
