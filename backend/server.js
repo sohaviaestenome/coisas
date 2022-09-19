@@ -5,15 +5,15 @@ const logger = require('morgan');
 
 const coisasRouter = require('./routers/coisas.route');
 
-
-require('dotenv').config({path: './db/.env'});
-
 const app = express();
 
 const PORT = process.env.PORT || 8000;
 
 app.use(logger('dev'));
 app.use(express.json());
+app.use(cors({
+    origin: 'http://localhost:3000',
+}));
 
 app.use('/coisas', coisasRouter)
 
