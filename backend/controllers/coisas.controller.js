@@ -88,7 +88,7 @@ exports.addCoisa = async (req, res) => {
 		
 		try {
 			const record = await db.query(coisasQuery, [coisaId]);
-			console.log(coisaId, 'coisaId');
+
 			if (record.rowCount < 1) {
 				return res.status(404).send({
 					message: "Record not found"

@@ -10,8 +10,6 @@ export const getCoisas = async () => {
   }
 }
 
-
-
 export const addCoisa= async (nome, origem, destino, quantidade) => {
   try {
     const response = await axiosInstance.post('/coisas', { nome, origem, destino, quantidade }
