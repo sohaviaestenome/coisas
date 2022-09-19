@@ -1,6 +1,6 @@
 import React from 'react';
 import { List, ListItem, ListItemIcon, ListItemText, IconButton  } from '@mui/material';
-import DeleteConfirmation from '../DeleteConfirmation/Delete';
+import DeleteConfirmation from '../PopUp/DeleteConfirmation/Delete';
 
 export const  CoisasList = (props) => {
 

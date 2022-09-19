@@ -1,6 +1,7 @@
 import { CoisasList } from '../../components/List/List';
 import {getCoisas} from '../../apis/coisas';
 import React, { useEffect, useState } from 'react';
+import { CreateCoisa } from '../../components/PopUp/CreateCoisa/CreateCoisa';
 
 export const Home = () => {
   const [items, setItems] = useState([]);
@@ -21,6 +22,7 @@ export const Home = () => {
   return (
     <div>
       <h1>Coisas a Levar</h1>
+      <CreateCoisa />
       <CoisasList items = {items} coisaLength = {coisaLength} setCoisaLength = {setCoisaLength} />
     </div>
   )

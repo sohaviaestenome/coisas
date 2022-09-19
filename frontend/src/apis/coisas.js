@@ -10,49 +10,19 @@ export const getCoisas = async () => {
   }
 }
 
-// export const getDaySleeps = async (id, dateDay) => {
-//   try {
-//     const response = await axiosInstance.get('/dashboard/day/',{
-//       params: {
-//         id,
-//         dateDay
-//       }
-//     })
-//     return response.data;
+
+
+export const addCoisa= async (nome, origem, destino, quantidade) => {
+  try {
+    const response = await axiosInstance.post('/coisas', { nome, origem, destino, quantidade }
+    );
     
-//   }catch(error){
-//     throw error.data;
-//   }
-// }
+    return response.data;
 
-// export const getWeekSleeps = async (id, dateStart, dateEnd) => {
-//   try {
-//     const response = await axiosInstance.get('/weekly-report',{
-//       params: {
-//         id,
-//         dateStart,
-//         dateEnd
-//       }
-//     })
-
-//     return response.data;
-    
-//   }catch(error){
-//     throw error.data;
-//   }
-// }
-
-// export const addSleeps = async (startTime, endTime, userId, duration) => {
-//   try {
-//     const response = await axiosInstance.post('/dashboard/day', { startTime, endTime, userId, duration }
-//     );
-    
-//     return response.data;
-
-//   } catch(error) {
-//     throw error.response.data;
-//   }
-// }
+  } catch(error) {
+    throw error.response.data;
+  }
+}
 
 export const deleteCoisa = async (coisaId) => {
   try {

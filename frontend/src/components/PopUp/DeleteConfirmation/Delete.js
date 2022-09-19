@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Slide }    from '@mui/material';
 import DeleteIcon  from '@mui/icons-material/Delete'
-import { deleteCoisa } from '../../apis/coisas';
+import { deleteCoisa } from '../../../apis/coisas';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
