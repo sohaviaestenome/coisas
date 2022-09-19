@@ -12,7 +12,7 @@ router.get('/',getCoisas);
 router.post('/',addCoisa);
 router.put('/:id',updateCoisa);
 router.get('/:id',getcoisaById);
-router.delete('/:id',deletecoisa);
+router.delete('/',deletecoisa);
 
 
 module.exports = router;

@@ -4,12 +4,13 @@ import React, { useEffect, useState } from 'react';
 
 export const Home = () => {
   const [items, setItems] = useState([]);
+  const [coisaLength, setCoisaLength] = useState([100]);
 
   useEffect(() => {
     getCoisas().then(res =>{
       setItems(res.data);
     })
-  }, [])
+  }, [coisaLength])
 
   let cenas = items.map(value => {
     return value.nome;
@@ -20,7 +21,7 @@ export const Home = () => {
   return (
     <div>
       <h1>Coisas a Levar</h1>
-      <CoisasList items = {items} />
+      <CoisasList items = {items} coisaLength = {coisaLength} setCoisaLength = {setCoisaLength} />
     </div>
   )
 }

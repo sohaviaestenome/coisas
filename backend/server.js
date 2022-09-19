@@ -5,7 +5,6 @@ const logger = require('morgan');
 
 const coisasRouter = require('./routers/coisas.route');
 
-
 const app = express();
 
 const PORT = process.env.PORT || 8000;

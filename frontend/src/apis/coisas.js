@@ -54,19 +54,20 @@ export const getCoisas = async () => {
 //   }
 // }
 
-// export const deleteSleep = async (sleepId) => {
-//   try {
-//     const response = await axiosInstance.delete('/dashboard/day',{
-//       params: {
-//         sleepId
-//       }
-//     });
-//     return response.data;
+export const deleteCoisa = async (coisaId) => {
+  try {
+    const response = await axiosInstance.delete('/coisas',{
+    params: 
+      { 
+        coisaId 
+      }
+    });
+    return response.data;
 
-//   }catch(error){
-//     throw error.response.data;
-//   }
-// }
+  }catch(error){
+    throw error.response.data;
+  }
+}
 
 // export const updateSleep = async (sleepId, startTime, endTime, duration) => {
 //   try {

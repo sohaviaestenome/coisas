@@ -1,19 +1,21 @@
 import React from 'react';
-import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Checkbox, IconButton  } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/DeleteIcon';
+import { List, ListItem, ListItemIcon, ListItemText, IconButton  } from '@mui/material';
+import DeleteConfirmation from '../DeleteConfirmation/Delete';
 
 export const  CoisasList = (props) => {
 
-  const { items } = props;
+  const { items, coisaLength, setCoisaLength } = props;
+  
   
   return (
+    
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       {items.map((value) => (
         <ListItem
           key={value}
-          secondaryAction={
+          secondaryAction= {
             <IconButton aria-label="comment">
-              <CommentIcon />
+              <DeleteConfirmation coisaId = {value.id} coisaLength = {coisaLength} setCoisaLength = {setCoisaLength}/>
             </IconButton>
           }
         >
