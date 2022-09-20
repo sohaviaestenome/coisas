@@ -48,4 +48,16 @@ module.exports = {
     GOOGLE_CALLBACK_URL: process.env.GOOGLE_CALLBACK_URL_DEV,
     FACEBOOK_CALLBACK_URL: process.env.FACEBOOK_CALLBACK_URL_DEV,
   },
+  docker: {
+    DB: {
+      DB_HOST: process.env.DB_HOST_DOCKER,
+      DB_USER: process.env.DB_USER_DOCKER,
+      DB_DATABASE: process.env.DB_DATABASE_DOCKER,
+      DB_PASSWORD: process.env.DB_PASSWORD_DOCKER,
+      DB_PORT: process.env.DB_PORT_DOCKER,
+    },
+    REDIRECT_URL: process.env.REDIRECT_URL_TEST,
+    GOOGLE_CALLBACK_URL: process.env.GOOGLE_CALLBACK_URL_DEV,
+    FACEBOOK_CALLBACK_URL: process.env.FACEBOOK_CALLBACK_URL_DEV,
+  },
 }
