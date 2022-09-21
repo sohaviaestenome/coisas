@@ -11,6 +11,7 @@ export const getCoisas = async () => {
 }
 
 export const addCoisa= async (nome, origem, destino, quantidade) => {
+  console.log(nome);
   try {
     const response = await axiosInstance.post('/coisas', { nome, origem, destino, quantidade }
     );

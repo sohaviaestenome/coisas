@@ -7,7 +7,7 @@ import './CoisaForm.css';
 
 export const CreateCoisa= (props) => {
   const [open, setOpen] = useState(false);
-  const {userInfo, dateDay, sleepLength, setSleepLength, setAlertVisibility, setAlertUnsucessCreate } = props
+  const {origem, coisaLength, setCoisaLength, setAlertVisibility, setAlertUnsucessCreate } = props
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -27,10 +27,7 @@ export const CreateCoisa= (props) => {
         <div className = "sleepform" style={{ padding: 20, overflow: "hidden" }}>
           <CreateCoisaForm 
           handleClose={handleClose} 
-          userInfo = {userInfo} 
-          dateDay = {dateDay} 
-          sleepLength = {sleepLength} 
-          setSleepLength = {setSleepLength}
+          setCoisaLength = {setCoisaLength}
           setAlertVisibility = {setAlertVisibility}
           setAlertUnsucessCreate = {setAlertUnsucessCreate}
         />
