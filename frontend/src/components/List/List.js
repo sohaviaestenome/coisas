@@ -4,23 +4,24 @@ import DeleteConfirmation from '../PopUp/DeleteConfirmation/Delete';
 
 export const  CoisasList = (props) => {
 
-  const { item, coisaLength, setCoisaLength } = props;
-  
+  const { nome, origem, destino, id, coisaLength, setCoisaLength } = props;
+  console.log(nome, 'items list')
   return (
+<>
 
-    <List sx={{ width: '100%', maxWidth: 200, bgcolor: 'background.paper' }}>
-        <ListItem
-          key={item}
+    <List sx={{ width: '100%', maxWidth: 200, bgcolor: 'background.paper' }}>   
+      <ListItem
+          key={id}
           secondaryAction= {
             <IconButton aria-label="comment">
-              <DeleteConfirmation coisaId = {item.id} coisaLength = {coisaLength} setCoisaLength = {setCoisaLength}/>
+              <DeleteConfirmation coisaId = {id} coisaLength = {coisaLength} setCoisaLength = {setCoisaLength}/>
             </IconButton>
           }
         >
-          <ListItemText primary={`${item.nome}`} />
-        </ListItem>
-      ))
+          <ListItemText primary={`${nome}`} />
+      </ListItem>
     </List>
+</>
 
   );
 }
