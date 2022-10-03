@@ -13,8 +13,6 @@ export const Home = () => {
     })
   }, [coisaLength])
 
-
-
   return (
     <div>
       <h1>Coisas a Levar</h1>
