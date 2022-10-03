@@ -22,8 +22,15 @@ export const Home = () => {
   return (
     <div>
       <h1>Coisas a Levar</h1>
-      <CreateCoisa />
-      <CoisasList items = {items} coisaLength = {coisaLength} setCoisaLength = {setCoisaLength} />
+      <CreateCoisa coisaLength = {coisaLength} setCoisaLength = {setCoisaLength}  />
+      <div>
+        {items.map( item => {
+        <CoisasList {...item} key={item.id} coisaLength = {coisaLength} setCoisaLength = {setCoisaLength}  />
+        })}
+        
+      </div> 
+
+     {/* <CoisasList items = {items} coisaLength = {coisaLength} setCoisaLength = {setCoisaLength} /> */}
     </div>
   )
 }

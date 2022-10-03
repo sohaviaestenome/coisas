@@ -7,7 +7,7 @@ import './CoisaForm.css';
 
 export const CreateCoisa= (props) => {
   const [open, setOpen] = useState(false);
-  const {origem, coisaLength, setCoisaLength, setAlertVisibility, setAlertUnsucessCreate } = props
+  const {coisaLength, setCoisaLength, setAlertVisibility, setAlertUnsucessCreate } = props
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -28,6 +28,7 @@ export const CreateCoisa= (props) => {
           <CreateCoisaForm 
           handleClose={handleClose} 
           setCoisaLength = {setCoisaLength}
+          coisaLength = {coisaLength}
           setAlertVisibility = {setAlertVisibility}
           setAlertUnsucessCreate = {setAlertUnsucessCreate}
         />
