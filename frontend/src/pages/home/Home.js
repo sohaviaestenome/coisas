@@ -18,7 +18,7 @@ export const Home = () => {
       <h1>Coisas a Levar</h1>
       <CreateCoisa coisaLength = {coisaLength} setCoisaLength = {setCoisaLength}  />
       <div>
-        {items.map( item => <CoisasList {...item} key={item.id} coisaLength = {coisaLength} setCoisaLength = {setCoisaLength} />)}
+        {items.map( item => <CoisasList {...item} key={item.id} coisaLength = {coisaLength} setCoisaLength = {setCoisaLength} items= {items} />)}
       </div> 
     </div>
   )
