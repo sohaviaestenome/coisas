@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "start": "node server.js",
-    "start-dev": "nodemon server.js --watch"
+    "start-dev": "nodemon server.js --watch",
+    "create-db": "node setupDatabase.js"
   },
   "repository": {
     "type": "git",
