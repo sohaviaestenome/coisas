@@ -9,7 +9,6 @@ export const getCoisas = async () => {
     throw error.data;
   }
 }
-
 export const addCoisa= async (nome, origem, destino, quantidade) => {
   console.log(nome);
   try {
