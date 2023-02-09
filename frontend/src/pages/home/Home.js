@@ -47,20 +47,67 @@ useEffect(() => {
       <h1>Coisas a Levar</h1>
       <CreateCoisa coisaLength = {coisaLength} setCoisaLength = {setCoisaLength}  />
       <div>
-        {items.map( item => {
+        {items.map( list => {
+          <div key={list.id}>
           return (
             <CoisasList 
-            {...item} 
             key={item.id} 
             coisaLength = {coisaLength} 
             setCoisaLength = {setCoisaLength} 
             items= {items} 
             destinations = {destinations}
             />
-          )}
+          )
+          </div>}
         )}
       </div> 
     </div>
   )
 }
 
+
+//base code
+// import React from 'react';
+// import { List, ListItem, ListItemText } from '@material-ui/core';
+
+// const listsData = [
+//   {
+//     id: 1,
+//     title: 'List 1',
+//     items: [
+//       { id: 1, text: 'Item 1' },
+//       { id: 2, text: 'Item 2' },
+//       { id: 3, text: 'Item 3' }
+//     ]
+//   },
+//   {
+//     id: 2,
+//     title: 'List 2',
+//     items: [
+//       { id: 4, text: 'Item 4' },
+//       { id: 5, text: 'Item 5' },
+//       { id: 6, text: 'Item 6' }
+//     ]
+//   }
+// ];
+
+// function MyLists(props) {
+//   return (
+//     <div>
+//       {listsData.map(list => (
+//         <div key={list.id}>
+//           <h2>{list.title}</h2>
+//           <List>
+//             {list.items.map(item => (
+//               <ListItem key={item.id}>
+//                 <ListItemText primary={item.text} />
+//               </ListItem>
+//             ))}
+//           </List>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
+
+// export default MyLists;
