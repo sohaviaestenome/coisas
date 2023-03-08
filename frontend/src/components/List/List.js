@@ -1,37 +1,26 @@
-import React from 'react';
-import { List, ListItem, ListItemText, IconButton  } from '@mui/material';
-import DeleteConfirmation from '../PopUp/DeleteConfirmation/Delete';
+import React, { useMemo } from 'react';
+import { List, ListItem, ListItemText } from '@mui/material';
 
-//display list of coisas from origem to destino
 export const CoisasList = (props) => {
-  const { origem, destino, coisaLength, setCoisaLength, items } = props;
+  const { origem, destino, items } = props;
+
+  const filteredItems = useMemo(() => {
+    return items.filter(item => item.origem === origem && item.destino === destino);
+  }, [items, origem, destino]);
 
   return (
     <>
-    <List>
-      {items.map(item => (
-        <ListItem key={item.id}>
-          <ListItemText primary={item.destino} />
-        </ListItem>
-      ))}
-    </List>
+      {filteredItems.length > 0 ? (
+        <List>
+          {filteredItems.map(item => (
+            <ListItem key={item.id}>
+              <ListItemText primary={item.nome} />
+            </ListItem>
+          ))}
+        </List>
+      ) : (
+        <p>No coisas found for the selected origem and destino.</p>
+      )}
     </>
   );
 };
-
-
-
-{/* <List sx={{ width: '100%', maxWidth: 200, bgcolor: 'background.paper' }}>
-<h4>{origem} --- {destino}</h4>
-{items
-  .filter((item) => item.origem === origem && item.destino === destino)
-  .map((item) => (
-    <ListItem key={item.id} secondaryAction={
-      <IconButton aria-label="comment">
-        <DeleteConfirmation coisaId={item.id} coisaLength={coisaLength} setCoisaLength={setCoisaLength} />
-      </IconButton>
-    }>
-      <ListItemText primary={`${item.nome}`} />
-    </ListItem>
-  ))}
-</List> */}
