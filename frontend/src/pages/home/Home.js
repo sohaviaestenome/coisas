@@ -36,7 +36,7 @@ export const Home = () => {
           return (
             <div key={pair}>
               <h2>{`${origem} - ${destino}`}</h2>
-              <CoisasList origem={origem} destino={destino} items={items} />
+              <CoisasList origem={origem} destino={destino} items={items} coisaLength={coisaLength} setCoisaLength={setCoisaLength} />
             </div>
           );
         })}

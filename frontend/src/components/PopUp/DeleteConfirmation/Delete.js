@@ -23,6 +23,7 @@ export default function DeleteConfirmation(props) {
       setCoisaLength(coisaLength-1);
       setOpen(false);    
     })
+    handleClose();
   }
   
   const handleDisagree = () => {
