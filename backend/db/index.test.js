@@ -21,6 +21,7 @@ describe('testing postgres', () => {
 
     test('pg connection', async () => {
         const client = await pgPool.connect();
+        
         try {
             await client.query('BEGIN');
 

@@ -1,14 +1,29 @@
-volumes:
-  data:
+version: '3'
 
 services:
-  postgres:
-    image: postgres:latest
+  db:
+    image: postgres
     environment:
-      - POSTGRES_PASSWORD=postgrespw
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
     ports:
-      - 5432:5432
-    volumes:
-      - data:/var/lib/postgresql
-  myapp:
-    image: 'postgres'
+      - '5432:5432'
+
+  api:
+    build: .
+    environment:
+      DB_HOST: db
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_DATABASE: ${DB_DATABASE}
+    ports:
+      - '4000:5000'
+
+  client:
+    build: ./client
+    ports:
+      - '3000:3000'
+    environment:
+      REACT_APP_API_BASE_URL: http://localhost:5000
+
