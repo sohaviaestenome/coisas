@@ -8,19 +8,23 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_DATABASE}
     ports:
-      - '5432:5432'
+      - '5433:5432'
 
   backend:
     build:
       context: .
       dockerfile: Dockerfile
     environment:
-      DB_HOST: db
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_DATABASE: ${DB_DATABASE}
+      DB_HOST_DOCKER: db
+      NODE_ENV: docker
+      DB_USER_DOCKER: ${DB_USER}
+      DB_PASSWORD_DOCKER: ${DB_PASSWORD}
+      DB_DATABASE_DOCKER: ${DB_DATABASE}
     ports:
       - '4000:4000'
+    volumes:
+      - ./.env:/app/.env
+
 
   client:
     build: ../frontend

@@ -16,7 +16,7 @@ const {Client} = require('pg');
   try {
     const db = new Client({
       user: DB.DB_USER,
-      host: DB.DB_HOST,
+      host: process.env.NODE_ENV === 'docker' ? 'db' : process.env.DB_HOST,
       database: DB.DB_DATABASE,
       password: DB.DB_PASSWORD,
       port: DB.DB_PORT,

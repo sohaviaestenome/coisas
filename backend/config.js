@@ -36,7 +36,7 @@ module.exports = {
       DB_USER: process.env.DB_USER_DOCKER,
       DB_DATABASE: process.env.DB_DATABASE_DOCKER,
       DB_PASSWORD: process.env.DB_PASSWORD_DOCKER,
-      DB_PORT: process.env.DB_PORT_DOCKER,
+      DB_PORT: process.env.DB_PORT,
     },
   },
 }

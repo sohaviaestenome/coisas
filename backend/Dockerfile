@@ -8,4 +8,5 @@ RUN npm install
 
 COPY . .
 
-CMD [ "npm", "start" ]
+# Run the setupDatabase.js script using CMD
+CMD [ "npm", "run", "create-db", "&&", "npm","run", "start-dev" ]
