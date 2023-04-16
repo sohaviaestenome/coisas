@@ -5,7 +5,8 @@ const { getCoisas,
         addCoisa,
         updateCoisa,
         getcoisaById,
-        deletecoisa
+        deletecoisa,
+        getCidades
 } = require('../controllers/coisas.controller')
 
 router.get('/',getCoisas);
@@ -13,7 +14,7 @@ router.post('/',addCoisa);
 router.put('/:id',updateCoisa);
 router.get('/:id',getcoisaById);
 router.delete('/',deletecoisa);
-
+router.get('/cidades', getCidades);
 
 module.exports = router;
 
