@@ -1,46 +1,45 @@
-const { NODE_ENV } = require('./config');
-const { DB } = require('./config')[NODE_ENV];
-const { Client } = require('pg');
+// __tests__/coisas.controller.test.js
+const request = require('supertest');
+const app = require('../server');
+const { db } = require('../db/index');
 
-(async () => {
-  const cidadeEnumStmt = `
-    DO $$ BEGIN
-      CREATE TYPE Cidade AS ENUM ('Cidade1', 'Cidade2', 'Cidade3', 'Cidade4', 'Cidade5');
-    EXCEPTION
-      WHEN duplicate_object THEN null;
-    END $$;
-  `;
+describe('coisas.controller', () => {
+  beforeAll(async () => {
+    // Create the Cidade_test ENUM type and the items_test table with test data if they don't already exist
+    await db.query(`
+      DO $$ BEGIN
+        CREATE TYPE Cidade_test AS ENUM ('Lisboa', 'Porto', 'Braga', 'Aveiro', 'Coimbra', 'Faro', 'Leiria', 'Viseu', 'Vila_Real', 'Guarda');
+      EXCEPTION
+        WHEN duplicate_object THEN null;
+      END $$;
 
-  const itemsTableStmt = `
-    CREATE TABLE IF NOT EXISTS items (
-      id SERIAL PRIMARY KEY,
-      nome TEXT NOT NULL,
-      origem Cidade NOT NULL,
-      destino Cidade NOT NULL,
-      quantidade INTEGER DEFAULT 1 NOT NULL
-    );
-  `;
+      CREATE TABLE IF NOT EXISTS items_test (
+        id SERIAL PRIMARY KEY,
+        nome TEXT NOT NULL,
+        origem Cidade_test NOT NULL,
+        destino Cidade_test NOT NULL,
+        quantidade INTEGER DEFAULT 1 NOT NULL
+      );
 
-  try {
-    const db = new Client({
-      user: DB.DB_USER,
-      host: process.env.NODE_ENV === 'docker' ? 'db' : process.env.DB_HOST,
-      database: DB.DB_DATABASE,
-      password: DB.DB_PASSWORD,
-      port: DB.DB_PORT,
-    });
+      INSERT INTO items_test (nome, origem, quantidade, destino)
+      VALUES ('Test Item', 'Lisboa'::Cidade_test, 5, 'Porto'::Cidade_test)
+      ON CONFLICT (nome) DO NOTHING;
+    `);
+  });
 
-    db.connect();
+  test('get all coisas', async () => {
+    const response = await request(app).get('/coisas');
+    expect(response.status).toBe(200);
+    expect(response.body.data.length).toBeGreaterThan(0);
+  });
 
-    // Create Cidade enum type
-    await db.query(cidadeEnumStmt);
+  test('get coisa by id', async () => {
+    const { rows } = await db.query('SELECT id FROM items_test LIMIT 1');
+    const id = rows[0].id;
+    const response = await request(app).get(`/coisas?id=${id}`);
+    expect(response.status).toBe(200);
+    expect(response.body.data.id).toBe(id);
+  });
 
-    // Create tables on database
-    await db.query(itemsTableStmt);
-
-    db.end();
-
-  } catch (err) {
-    console.log("ERROR CREATING ONE OR MORE TABLES: ", err);
-  }
-})();
+  // Add other tests for your controller here
+});

@@ -26,22 +26,33 @@ exports.getCoisas = async (req,res) => {
 
 exports.addCoisa = async (req, res) => {
 	const { nome, origem, quantidade, destino } = req.body;
-	  const query = "INSERT INTO items(nome, origem, quantidade, destino) VALUES($1, $2, $3, $4) RETURNING *";
   
+	// Check if origem and destino are valid cidades based on the Cidade enum
+	const enumQuery = `SELECT * FROM pg_type WHERE typname = 'cidade'`;
+	const { rows: enumRows } = await db.query(enumQuery);
+	const enumLabels = enumRows[0].enumlabels;
+	if (!enumLabels.includes(origem) || !enumLabels.includes(destino)) {
+	  return res.status(400).send({
+		error: "Origem or destino is not a valid cidade."
+	  });
+	}
+  
+	const query = "INSERT INTO items(nome, origem, quantidade, destino) VALUES($1, $2, $3, $4) RETURNING *";
+	
 	try {
-		  const newCoisa = await db.query(query, [nome, origem, quantidade, destino]);
-          
-		  res.status(201).send({
-			  status: 'Success',
-			  message: 'New envelope created',
-			  data: newCoisa.rows[0],
-			  });
+	  const newCoisa = await db.query(query, [nome, origem, quantidade, destino]);
+	  res.status(201).send({
+		status: 'Success',
+		message: 'New envelope created',
+		data: newCoisa.rows[0],
+	  });
 	} catch (err) {
 	  return res.status(500).send({
-			  error: err.message
-		  });
+		error: err.message
+	  });
 	}
   };
+  
 
 exports.updateCoisa = async (req, res) => {
 	const { nome, origem, quantidade, destino } = req.body;
