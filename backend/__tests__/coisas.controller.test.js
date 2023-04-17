@@ -1,7 +1,10 @@
 // __tests__/coisas.controller.test.js
 const request = require('supertest');
 const app = require('../server');
-const db = require('../db/index');
+const { db } = require('../db/index');
+
+
+console.log('Testing environment: ', process.env.NODE_ENV);
 
 beforeAll(async () => {
   // Create the enum type and a test table with test data
