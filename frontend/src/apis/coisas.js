@@ -39,7 +39,8 @@ export const deleteCoisa = async (coisaId) => {
 
 export const getCidades = async() => {
   try {
-    const response = await axiosInstance.get('/cidades');
+    const response = await axiosInstance.get('/coisas/cidades/list');
+    console.log(response.data);
     return response.data;
   }catch(error){
     throw error.response.data;

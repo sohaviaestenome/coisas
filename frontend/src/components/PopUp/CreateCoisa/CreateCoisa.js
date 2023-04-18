@@ -1,5 +1,4 @@
 //CreateCoisa.js
-
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
@@ -28,11 +27,12 @@ export const CreateCoisa= (props) => {
         <DialogTitle>Create Sleep Activity</DialogTitle>
         <div className = "sleepform" style={{ padding: 20, overflow: "hidden" }}>
           <CreateCoisaForm 
-          handleClose={handleClose} 
-          setCoisaLength = {setCoisaLength}
-          coisaLength = {coisaLength}
-          setAlertVisibility = {setAlertVisibility}
-          setAlertUnsucessCreate = {setAlertUnsucessCreate}
+          onCancel={handleClose} // Add this line to pass the handleClose function as the onCancel prop
+          handleClose={handleClose}
+          setCoisaLength={setCoisaLength}
+          coisaLength={coisaLength}
+          setAlertVisibility={setAlertVisibility}
+          setAlertUnsucessCreate={setAlertUnsucessCreate}
         />
         </div>
       </Dialog>
