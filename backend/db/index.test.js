@@ -9,7 +9,6 @@ describe('testing postgres', () => {
   const isProduction = process.env.NODE_ENV === 'production';
 
   const connectionString = DB.DB_PASSWORD ? `postgresql://${DB.DB_USER}:${DB.DB_PASSWORD}@${DB.DB_HOST}:${DB.DB_PORT}/${DB.DB_DATABASE}` : `postgresql://${DB.DB_USER}@${DB.DB_HOST}:${DB.DB_PORT}/${DB.DB_DATABASE}`;
-  console.log(connectionString, 'connection string test');
 
   beforeAll(async () => {
     pgPool = new Pool({
@@ -48,7 +47,6 @@ describe('testing postgres', () => {
 
     try {
       const { rows } = await client.query('SELECT nome FROM items WHERE nome = $1', [expectedValue]);
-      console.log(rows);
       expect(rows[0]['nome']).toBe(expectedValue);
     } catch (err) {
       throw err;

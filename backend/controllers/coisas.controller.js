@@ -116,16 +116,16 @@ exports.deletecoisa = async (req, res) => {
 };
 
 exports.getCidades = async (req, res) => {
-    const enumQuery = `
-        SELECT unnest(enum_range(NULL::Cidade)) AS nome`;
-    try {
-        const { rows } = await db.query(enumQuery);
-        res.status(200).json(rows);
-    } catch (err) {
-        console.log(err);
-        res.status(500).send({
-            error: err.message
-        });
-    }
-};
+	const query = `SELECT unnest(enum_range(NULL::Cidade)) AS nome`;
+	try {
+	  const { rows } = await db.query(query);
+	  res.status(200).send(rows);
+	} catch (err) {
+	  console.log(err);
+	  res.status(500).send({
+		error: err.message,
+	  });
+	}
+  };
+  
 

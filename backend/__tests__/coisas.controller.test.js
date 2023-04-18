@@ -45,6 +45,13 @@ describe('coisas.controller', () => {
     expect(response.status).toBe(200);
     expect(response.body.data[0].id).toBe(id);
   });
-  
+
+  //test getCidades
+  test('get cidades', async () => {
+    const response = await request(app).get('/coisas/cidades/list');
+    console.log(response.body.length, 'response cidades')
+    expect(response.status).toBe(200);
+    expect(response.body.length).toBeGreaterThan(0);
+  });
   
 });

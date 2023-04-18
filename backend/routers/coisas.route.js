@@ -15,7 +15,7 @@ router.post('/',addCoisa);
 router.put('/:id',updateCoisa);
 router.get('/:id',getcoisaById);
 router.delete('/',deletecoisa);
-router.get('/cidades', getCidades);
+router.get('/cidades/list', getCidades);
 
 module.exports = router;
 

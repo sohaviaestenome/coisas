@@ -8,7 +8,7 @@ describe('coisas.controller', () => {
     // Create the Cidade_test ENUM type and the items_test table with test data if they don't already exist
     await db.query(`
       DO $$ BEGIN
-        CREATE TYPE Cidade_test AS ENUM ('Lisboa', 'Porto', 'Braga', 'Aveiro', 'Coimbra', 'Faro', 'Leiria', 'Viseu', 'Vila_Real', 'Guarda');
+        CREATE TYPE Cidade_test AS ENUM ('Lisboa', 'Caldas', 'Raposeira', 'Serra do Bouro');
       EXCEPTION
         WHEN duplicate_object THEN null;
       END $$;
