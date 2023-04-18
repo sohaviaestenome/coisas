@@ -9,7 +9,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function DeleteConfirmation(props) {
   const [open, setOpen] = React.useState(false);
-  const {coisaId, coisaLength, setCoisaLength} = props;
+  const {coisaId, setCoisaLength} = props;
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -20,11 +20,12 @@ export default function DeleteConfirmation(props) {
 
   const handleAgree = (id) => {
     deleteCoisa(coisaId).then(res => {
-      setCoisaLength(coisaLength-1);
-      setOpen(false);    
-    })
-    handleClose();
+      setCoisaLength(prevLength => prevLength - 1);
+      setOpen(false);
+      handleClose();
+    });
   }
+  
   
   const handleDisagree = () => {
     setOpen(false);
