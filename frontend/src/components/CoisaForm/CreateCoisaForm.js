@@ -4,7 +4,8 @@ import { TextField, Button, MenuItem } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { addCoisa, getCidades } from '../../apis/coisas';
 
-export const CreateCoisaForm = ({ onCancel, onAdd }) => {
+export const CreateCoisaForm = (props) => {
+  const {onCancel, onAdd, handleClose, setAlertType, setOpenSnackbar} = props;
   const { handleSubmit, control, reset, watch } = useForm();
   const [cidades, setCidades] = useState([]);
   const [origemCidades, setOrigemCidades] = useState([]);
@@ -16,12 +17,16 @@ export const CreateCoisaForm = ({ onCancel, onAdd }) => {
   const onSubmit = async (data) => {
     try {
       const response = await addCoisa(data.nome, data.origem, data.destino, data.quantidade);
-      onAdd(response.data);
+      onAdd(response.data); // Call the onAdd function here
       reset();
+      handleClose(); // Close the dialog
+      setAlertType('success');
+      setOpenSnackbar(true); // Show the Snackbar
     } catch (error) {
       console.error(error);
     }
   };
+  
 
   const fetchCidades = async () => {
     try {
