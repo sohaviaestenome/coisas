@@ -37,30 +37,11 @@ export const deleteCoisa = async (coisaId) => {
   }
 }
 
-// export const updateSleep = async (sleepId, startTime, endTime, duration) => {
-//   try {
-//     const response = await axiosInstance.put('/dashboard/day',{ sleepId, startTime, endTime, duration });
-//     return response.data;
-
-
-//   }catch(error){
-//     throw error.response.data;
-//   }
-// }
-
-// export const getSleep = async (userId, dateStart, dateEnd, duration) => {
-//   try {
-//     const response = await axiosInstance.get('/weekly-report',{
-//       params: {
-//         userId,
-//         dateStart,
-//         dateEnd,
-//         duration
-//       }
-//     })
-//     return response.data;
-    
-//   }catch(error){
-//     throw error.data;
-//   }
-// }
+export const getCidades = async() => {
+  try {
+    const response = await axiosInstance.get('/cidades');
+    return response.data;
+  }catch(error){
+    throw error.response.data;
+  }
+}

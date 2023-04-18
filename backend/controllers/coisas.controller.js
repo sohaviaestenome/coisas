@@ -1,3 +1,4 @@
+//coisas.controller.js
 const { db } = require('../db/index');
 
 exports.getCoisas = async (req,res) => {
