@@ -7,7 +7,6 @@ import { CreateCoisaForm } from "../../CoisaForm/CreateCoisaForm";
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/lab/Alert';
 
-import './CoisaForm.css';
 
 export const CreateCoisa= (props) => {
   const [open, setOpen] = useState(false);
@@ -37,7 +36,7 @@ export const CreateCoisa= (props) => {
         Create Coisa a Levar
       </Button>
       <Dialog open={open} onClose={handleClose}   >
-        <DialogTitle>Create Sleep Activity</DialogTitle>
+        <DialogTitle>Criar Coisa a Levar</DialogTitle>
         <div className = "sleepform" style={{ padding: 20, overflow: "hidden" }}>
           <CreateCoisaForm 
           onCancel={handleClose}
@@ -52,7 +51,9 @@ export const CreateCoisa= (props) => {
             setCoisaLength(coisaLength + 1); // Update the coisaLength here
           }}
         />
-        <Snackbar
+        </div>
+      </Dialog>
+      <Snackbar
           open={openSnackbar}
           autoHideDuration={3000}
           onClose={handleCloseSnackbar}
@@ -62,8 +63,6 @@ export const CreateCoisa= (props) => {
             Coisa a levar criada com sucesso!
           </Alert>
         </Snackbar>
-        </div>
-      </Dialog>
     </div>
   );
 };
