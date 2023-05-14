@@ -14,11 +14,11 @@ module.exports = {
   },
   production: {
     DB: {
-      DB_HOST: process.env.DB_HOST_PROD,
-      DB_USER: process.env.DB_USER_PROD,
+      DB_HOST: process.env.RDS_HOSTNAME,
+      DB_USER: process.env.RDS_USERNAME,
       DB_DATABASE: process.env.DB_DATABASE_PROD,
-      DB_PASSWORD: process.env.DB_PASSWORD_PROD,
-      DB_PORT: process.env.DB_PORT_PROD,
+      DB_PASSWORD: process.env.RDS_PASSWORD,
+      DB_PORT: process.env.RDS_PORT,
     },
   },
   testing: {
